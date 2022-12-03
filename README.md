@@ -1,3 +1,1 @@
-# pyhton-socket-video-stream
-# pyhton-socket-video-stream
-# pyhton-socket-video-stream
+at the moment, it only works with private ip addr 
