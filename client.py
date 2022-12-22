@@ -1,24 +1,20 @@
 
-# Welcome to PyShine
-# This is client code to receive video and audio frames over UDP/TCP
-
 import cv2, imutils, socket
 import numpy as np
 import time, os
 import base64
 import threading, wave, pyaudio,pickle,struct
-# For details visit pyshine.com
 BUFF_SIZE = 65536
 
 BREAK = False
 client_socket = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 client_socket.setsockopt(socket.SOL_SOCKET,socket.SO_RCVBUF,BUFF_SIZE)
 host_name = socket.gethostname()
-host_ip = '196.109.118.204'#  socket.gethostbyname(host_name)
-print(host_ip)
+host_ip = '196.109.118.204'
+#host_ip socket.gethostbyname(host_name)
 port = 9688
 message = b'Hello'
-
+print(f"{host_ip} on {port}")
 client_socket.sendto(message,(host_ip,port))
 
 def video_stream():
@@ -100,7 +96,7 @@ def audio_stream():
 
 from concurrent.futures import ThreadPoolExecutor
 with ThreadPoolExecutor(max_workers=2) as executor:
-	# executor.submit(audio_stream)
+	# executor.submit(audio_stream) #to hear audio uncomment
 	executor.submit(video_stream)
 
 
