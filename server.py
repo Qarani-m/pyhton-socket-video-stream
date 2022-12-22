@@ -1,4 +1,3 @@
-# This is server code to send video and audio frames over UDP/TCP
 
 import cv2, imutils, socket
 import numpy as np
